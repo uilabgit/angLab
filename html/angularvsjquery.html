@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../node_modules/angular/angular.min.js">
+    </script>
+    <script src="../node_modules/jquery/dist/jquery.min.js">
+    </script>
+
+    
+
+</head>
+
+<body>
+
+   <div class="chapter"> 
+   
+   <div class="chapterName">
+       Chapter 1 :  Data Binding
+   </div>
+
+      <div class="topicName"> Angular v/s Jquery</div>
+
+   </div>
+      <div class="chapter">
+     <div class="topicName">---------Jquery Code--------------</div>
+      </div>
+<!-------------Jquery Code-->
+    <input type="text" class="form-control" id="username"><div id="display_username"></div>
+   
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $('#username').on('keyup', function () {
+                $('#display_username').html($('#username').val());
+            });
+        });
+    </script>
+
+    <!---Jquery Code -------------------------------->
+
+
+     <div class="chapter">
+        <div class="topicName">---------Angular Code--------------</div> 
+     </div>
+     
+<!-------------Angular Code-->
+   <div ng-app="">
+
+    <input type="text" ng-model="username" class="form-control" id="username"><div id="display_username" ng-bind="username"></div>
+   
+   </div>
+
+</body>
+
+</html>

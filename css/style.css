@@ -1,0 +1,26 @@
+.chapter {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.topicName {
+    margin: 20px auto;
+    font-family: Roboto;
+    font-size: 18px;
+}
+
+.chapterName {
+    font-family: georgia;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+input#username {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#display_username{
+    text-align: center;
+}

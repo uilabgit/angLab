@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../node_modules/angular/angular.min.js">
+    </script>
+
+    <script src="../node_modules/angular-route/angular-route.min.js">
+    </script>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js">
+    </script>
+
+
+
+
+</head>
+
+<body ng-app="ang">
+
+    <div class="chapter">
+
+        <div class="chapterName">
+            Chapter 1 : Data Binding
+        </div>
+
+        <div class="topicName">scope</div>
+
+    </div>
+
+
+    <div ng-controller="outerControl">
+        <div ng-repeat="name in names">
+
+            <!--{{name.firstName}}-->
+
+            <!--input type="text" class="form-control" id="username" ng-model="username"-->
+            <div>
+                {{ joinName(name.firstName, name.secondName) }}
+            </div>
+
+            <!--div>
+                {{username}}              
+            </div-->
+
+            <!--div>
+                {{ joinName(name.firstName, username) }}
+            </div-->
+        </div>
+       
+        <!--div ng-controller="innerControl">
+              <input type="text" class="form-control" id="username" ng-model="userinnername">
+               <div ng-repeat="name in names">
+               {{name.firstName}}{{userinnername}}
+               </div>
+        </div-->
+
+    </div>
+
+    <!--input type="text" class="form-control" id="username" ng-model="username">
+
+    <div>
+        {{username}}
+    </div-->
+
+    <script type="text/javascript">
+        var angu = angular.module('ang', []);
+
+         /*angu.controller('innerControl', function ($scope) {
+
+         });*/
+
+        angu.controller('outerControl', function ($scope) {
+
+            $scope.names = [{
+                    firstName: "Narendra",
+                    secondName: "Modi"
+                },
+                {
+                    firstName: "Aravind",
+                    secondName: "Kejariwal"
+                }
+            ];
+            $scope.joinName = function (first, sec) {
+                return first + " " + sec;
+            };
+        });
+    </script>
+
+</body>
+
+</html>
