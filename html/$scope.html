@@ -70,9 +70,9 @@
    
    <!--{{names[0].firstName}}-->
 
-    <!--input type="text" class="form-control" id="username" ng-model="username">
+    <!--input type="text" class="form-control" id="username" ng-model="username"-->
 
-    <div>
+    <!--div>
         {{username}}
     </div-->
 
@@ -94,6 +94,7 @@
                     secondName: "Kejariwal"
                 }
             ];
+            $scope.username="";
             $scope.joinName = function (first, sec) {
                 return first + " " + sec;
             };

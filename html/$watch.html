@@ -28,32 +28,31 @@
     <div class="chapter">
 
         <div class="chapterName">
-            Chapter 2 : Directives
+            Chapter 1 : Data Binding
         </div>
 
-        <div class="topicName">Custom Directives - Default</div>
+        <div class="topicName">scope</div>
 
     </div>
 
 
-    <div>   
-        <!--<print-name></print-name>-->
-        <!--div print-name></div-->
-        <!--div class="print-name"></div-->
-        <!-- directive: print-name -->      
+    <div ng-controller="outerControl">     
+        <input type="text" class="form-control" id="username" ng-model="username"> {{firstName}}
     </div>
-
 
 
 
     <script type="text/javascript">
-        var angu = angular.module('ang', []);  
-        angu.directive('printName', function () {
-            return {
-                restrict: 'AECM', //A-attribute,E-element,C-class,M-comment,
-                replace: true, //false,                
-                template:'<div><button class="btn" style="width:300px;margin:30px;">print</button>{{firstName}}</div>'               
-            }
+        var angu = angular.module('ang', []);
+
+        angu.controller('outerControl', function ($scope) {
+
+            $scope.username = "";
+            $scope.firstName = "";      
+
+            $scope.$watch('username', function (n, o, s) {
+                $scope.firstName = n + o;
+            }, true);
         });
     </script>
 

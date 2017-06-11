@@ -50,16 +50,11 @@
             $scope.username = "";
             $scope.firstName = "";
 
-            /*setTimeout(function () {
+            setTimeout(function () {
                 $scope.$apply(function () {
                     $scope.firstName = 'aravind';
                  });
-            }, 5000);*/
-
-
-            $scope.$watch('username', function (n, o, s) {
-                $scope.firstName = n + o;
-            }, true);
+            }, 5000);           
         });
     </script>
 
