@@ -37,8 +37,8 @@
 
 
     <div ng-controller="outerControl">
-        <print-name></print-name>   
         My Name is {{firstName}}
+        <print-name name-value="{{firstName}}"></print-name>
     </div>
 
 
@@ -53,19 +53,21 @@
 
         angu.directive('printName', function () {
             return {
-                scope: true,
+                scope: {
+                    firstName: '@nameValue'
+                },
                 restrict: 'E',
-                replace: true,                
-                template:'<div><button class="btn" style="width:300px;margin:30px;">print</button>{{firstName}}</div>', //templateUrl:'template.html',
+                replace: false,
+                template: '<div><button class="btn" style="width:300px;margin:30px;">print</button>{{nameValue}}</div>', //templateUrl:'template.html',
                 link: function (scope, elem, attrs) {
                     var count = 0;
                     elem.bind('click', function () {
                         scope.$apply(function () {
                             if (count == 0) {
-                                scope.firstName = "vishak";
+                                scope.nameValue = "vishak";
                                 count = 1;
                             } else {
-                                scope.firstName = "bahanan";
+                                scope.nameValue = "bahanan";
                                 count = 0;
                             }
                         });
