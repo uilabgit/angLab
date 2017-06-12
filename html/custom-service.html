@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../node_modules/angular/angular.min.js">
+    </script>
+
+    <script src="../node_modules/angular-route/angular-route.min.js">
+    </script>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js">
+    </script>
+
+
+
+
+</head>
+
+<body ng-app="ang">
+
+    <div class="chapter">
+
+        <div class="chapterName">
+            Chapter 2 : filters
+        </div>
+
+        <div class="topicName">Built In Filters</div>
+
+    </div>
+
+
+    <div ng-controller="outerControl">
+        <input type="text" class="form-control" id="username" ng-model="primes">
+        <div>Number is {{prime}}</div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        var angu = angular.module('ang', []);
+
+        angu.controller('outerControl', function ($scope, $prime) {
+             $scope.primes=0;
+             $scope.$apply(function(){
+                 $scope.prime= $prime.isprime($scope.primes);
+             });            
+             
+        });
+
+        angu.service('$prime', function () {
+            this.isprime = function (input) {
+                 var count = 1;
+                var inp = parseInt(input);
+                for (var i = 1; i < inp; i++) {
+                    if (inp % i == 0) {
+                        count = count + 1;
+                    }
+                }
+                console.log(count)
+                if (count == 2) {
+                    return 'prime'
+
+                } else {
+                    return 'Not Prime'
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
