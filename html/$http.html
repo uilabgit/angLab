@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../node_modules/angular/angular.min.js">
+    </script>
+
+    <script src="../node_modules/angular-route/angular-route.min.js">
+    </script>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js">
+    </script>
+
+
+
+
+</head>
+
+<body ng-app="ang">
+
+    <div class="chapter">
+
+        <div class="chapterName">
+            Chapter 3 : Services
+        </div>
+
+        <div class="topicName">$http</div>
+
+    </div>
+
+
+    <div ng-controller="outerControl">  
+         <p>|---$location----------|</p>    
+        <div>URL of site is  a {{url}}</div>
+
+        <!-- <p>|---$timeout----------|</p>    
+        <div>URL of site is  a {{url}}</div>
+
+         <p>|---$interval----------|</p>    
+        <div>URL of site is  a {{count}}</div>-->
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        var angu = angular.module('ang', []);       
+
+        angu.controller('outerControl', function ($scope,$location,$timeout,$interval) {
+            $scope.url = $location.absUrl();
+            /*$scope.count=0;
+            $timeout(function(){
+             $scope.url='Delay in loading URL';
+            },2000);
+
+            $interval(function(){
+                $scope.count=$scope.count+1;
+            },1000);*/
+        });
+    </script>
+
+</body>
+
+</html>

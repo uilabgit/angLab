@@ -38,7 +38,7 @@
 
     <div ng-controller="outerControl">
         My Name is {{firstName}}
-        <print-name name-value="{{firstName}}"></print-name>
+        <print-name name="{{firstName}}"></print-name>
     </div>
 
 
@@ -54,7 +54,7 @@
         angu.directive('printName', function () {
             return {
                 scope: {
-                    nameValue: '@nameValue'
+                    nameValue: '@name'
                 },
                 restrict: 'E',
                 replace: false,

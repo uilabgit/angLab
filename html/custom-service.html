@@ -28,17 +28,20 @@
     <div class="chapter">
 
         <div class="chapterName">
-            Chapter 2 : filters
+            Chapter 3 : Services
         </div>
 
-        <div class="topicName">Built In Filters</div>
+        <div class="topicName">Custom Services</div>
 
     </div>
 
 
     <div ng-controller="outerControl">
-        <input type="text" class="form-control" id="username" ng-model="primes">
-        <div>Number is {{prime}}</div>
+
+        <input type="text" class="form-control" id="username" ng-model="numVal">
+        <div>square of a {{numVal}} is {{square}}</div>
+
+         <div>cube of a {{numVal}} is {{cube}}</div>
     </div>
 
 
@@ -47,31 +50,33 @@
     <script type="text/javascript">
         var angu = angular.module('ang', []);
 
-        angu.controller('outerControl', function ($scope, $prime) {
-             $scope.primes=0;
-             $scope.$apply(function(){
-                 $scope.prime= $prime.isprime($scope.primes);
-             });            
-             
+        angu.service('calc', function () {            
+            this.square = function (input) {
+                //console.log(input);
+                input = parseInt(input) * parseInt(input);
+                return input;
+            }
+
+            this.cube = function (input) {
+                //console.log(input);
+                input = parseInt(input) * parseInt(input) * parseInt(input);
+                return input;
+            }
         });
 
-        angu.service('$prime', function () {
-            this.isprime = function (input) {
-                 var count = 1;
-                var inp = parseInt(input);
-                for (var i = 1; i < inp; i++) {
-                    if (inp % i == 0) {
-                        count = count + 1;
-                    }
+        angu.controller('outerControl', function ($scope,calc) {
+            $scope.numVal = 0;
+            $scope.square = 0;
+            $scope.cube = 0;       
+            
+            $scope.$watch('numVal', function (n) {
+                if (n) {                   
+                     $scope.square=calc.square($scope.numVal); 
+                     $scope.cube=calc.cube($scope.numVal);                   
                 }
-                console.log(count)
-                if (count == 2) {
-                    return 'prime'
+            })
 
-                } else {
-                    return 'Not Prime'
-                }
-            }
+
         });
     </script>
 
